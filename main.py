@@ -14,13 +14,10 @@ list_symbols = []
 list_numbers = []
 for n in range(0,nr_letters):
     list_letters.append(letters[random.randint(0,len(letters)-1)])
-print(list_letters)
 for n in range(0,nr_symbols):
     list_symbols.append(symbols[random.randint(0,len(symbols)-1)])
-print(list_symbols)
 for n in range(0,nr_numbers):
     list_numbers.append(numbers[random.randint(0,len(numbers)-1)])
-print(list_numbers)
 
 list_password = []
 
@@ -28,4 +25,21 @@ list_password.append(list_letters)
 list_password.append(list_numbers)
 list_password.append(list_symbols)
 
-print(list_password)
+password = ''
+
+while list_password != [[],[],[]]:
+    rand_list = random.randint(0,len(list_password)-1)
+    if rand_list == 0 and list_letters != []:
+        rand_letter = random.randint(0,len(list_letters)-1)
+        password += list_password[rand_list][rand_letter]
+        list_letters.pop(rand_letter)
+    elif rand_list == 1 and list_numbers != []:
+        rand_number = random.randint(0, len(list_numbers) - 1)
+        password += list_password[rand_list][rand_number]
+        list_numbers.pop(rand_number)
+    elif rand_list == 2 and list_symbols != []:
+        rand_symbol = random.randint(0, len(list_symbols) - 1)
+        password += list_password[rand_list][rand_symbol]
+        list_symbols.pop(rand_symbol)
+
+print(password)
